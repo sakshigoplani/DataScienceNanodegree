@@ -42,7 +42,7 @@ Introduction_To_Data_Science_Project_1/
 - listings.csv         ==> Information of listings in New York.
 
 ## Results
-Results and discussions were published on Medium: https://medium.com/@sakshigoplani9/torque-your-airbnb-spin-in-new-york-557c5902f5de
+Results and discussions were published on [Medium](https://medium.com/@sakshigoplani9/torque-your-airbnb-spin-in-new-york-557c5902f5de)
 
 - In general, the price trend for different types of neighbourhoods: Manhattan > Brooklyn > Queens > Bronx > Staten Island
 - In general, the price trend for different types of properties: Hotel Room > Entire Home/Apartment > Private Room > Shared Room
