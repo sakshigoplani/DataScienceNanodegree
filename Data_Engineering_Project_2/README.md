@@ -21,7 +21,7 @@ This project applies Data Engineering skills to analyze disaster data from Figur
     │   └── train_classifier.py              # Train ML model           
     └── README.md
     
-### Instructions:
+## Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -33,3 +33,8 @@ This project applies Data Engineering skills to analyze disaster data from Figur
     `python run.py`
 
 3. Go to http://localhost:4200/
+
+## Example
+![ScreenShot](chart.JPG)
+
+![ScreenShot](example.JPG)
