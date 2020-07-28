@@ -2,7 +2,7 @@
 #                                                                         ##
 #                                                                         ##
 #  Author:     Sakshi Haresh Goplani                                      ##
-#  Project:    Date Engineering - Disaster Response Pipeline              ##
+#  Project:    Data Engineering - Disaster Response Pipeline              ##
 #  Email:      sakshigoplani9@gmail.com                                   ##
 #                                                                         ##
 ############################################################################

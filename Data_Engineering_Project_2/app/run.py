@@ -1,3 +1,22 @@
+############################################################################
+#                                                                         ##
+#                                                                         ##
+#  Author:     Sakshi Haresh Goplani                                      ##
+#  Project:    Data Engineering - Disaster Response Pipeline              ##
+#  Email:      sakshigoplani9@gmail.com                                   ##
+#                                                                         ##
+############################################################################
+
+""" Web Application
+
+This script launches web application through Flask Server for interaction
+with pkl model and sql database
+
+Usage: python run.py
+
+"""
+
+
 import json
 import plotly
 import pandas as pd
