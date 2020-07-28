@@ -35,6 +35,6 @@ This project applies Data Engineering skills to analyze disaster data from Figur
 3. Go to http://localhost:4200/
 
 ## Example
-![Charts](charts.JPG)
+![Charts](charts.png)
 
-![Example](example.JPG)
+![Example](example.png)

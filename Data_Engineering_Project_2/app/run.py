@@ -8,11 +8,28 @@ from nltk.tokenize import word_tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
-from sklearn.externals import joblib
+
+# Deprecated
+# from sklearn.externals import joblib
+import joblib
+
 from sqlalchemy import create_engine
+
+# Download nltk libraries
+import nltk
+import ssl
+# To bypass certificate errors
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+nltk.download(['punkt', 'wordnet'])
 
 
 app = Flask(__name__)
+
 
 def tokenize(text):
     tokens = word_tokenize(text)
@@ -25,26 +42,39 @@ def tokenize(text):
 
     return clean_tokens
 
+
 # load data
-engine = create_engine('sqlite:///../data/YourDatabaseName.db')
-df = pd.read_sql_table('YourTableName', engine)
+engine = create_engine("sqlite:///../data/ETLDB.db")
+
+df = pd.read_sql_table('ETLTable', engine)
 
 # load model
-model = joblib.load("../models/your_model_name.pkl")
+model = joblib.load("../models/clf_cv_1.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
 @app.route('/index')
 def index():
-    
+
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
+    # Message Count by Genre
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+
+    # Message Count/Percentage by Category
+    category_names = list(df.columns)[4:]
+    category_counts = []
+    category_precentages = {}
+
+    for col in category_names:
+        category_counts.append(df.shape[0] - df.groupby(col).count()['id'][0])
+        category_precentages[col] = ((df.shape[0] - df.groupby(col).count()['id'][0]) / (df.shape[0]))*100
+
+    top_category_percentages = {k:v for k,v in sorted(category_precentages.items(), 
+                                key = lambda item : item[1], reverse=True)[:5]}
+
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         {
             'data': [
@@ -63,13 +93,49 @@ def index():
                     'title': "Genre"
                 }
             }
+        },
+        {
+            'data': [
+                Bar(
+                    x=category_names,
+                    y=category_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=list(top_category_percentages.keys()),
+                    y=list(top_category_percentages.values())
+                )
+            ],
+
+            'layout': {
+                'title': 'Percentage Distribution of Message Categories',
+                'yaxis': {
+                    'title': "Percentage Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
+                }
+            }
         }
     ]
-    
+
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
-    
+
     # render web page with plotly graphs
     return render_template('master.html', ids=ids, graphJSON=graphJSON)
 
@@ -93,7 +159,7 @@ def go():
 
 
 def main():
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='localhost', port=4200, debug=True)
 
 
 if __name__ == '__main__':
