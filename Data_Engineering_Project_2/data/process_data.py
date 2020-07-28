@@ -2,7 +2,7 @@
 #                                                                         ##
 #                                                                         ##
 #  Author:     Sakshi Haresh Goplani                                      ##
-#  Tool:       Combine multiple IP-XACT Files for Qsys Processing         ##
+#  Project:    Date Engineering - Disaster Response Pipeline              ##
 #  Email:      sakshigoplani9@gmail.com                                   ##
 #                                                                         ##
 ############################################################################
