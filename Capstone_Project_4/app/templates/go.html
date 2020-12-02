@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+{% block title %}Results{% endblock %}
+
+{% block message %}
+    <hr />
+    <h4 class="text-center">Stock Symbol</h4>
+    <p class="text-center"><i>{{query}}</i></p>
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Result (Basic RandomForestClassifier)</h1>
+        <ul class="list-group">
+            <li class="list-group-item text-center">Train Score: {{train_score}}</li>
+            <li class="list-group-item text-center">Test Score: {{test_score}}</li>
+                {% if tomorrow_change == 1 %}
+                    <li class="list-group-item list-group-item-success text-center">Overnight Direction: {{tomorrow_change}} with Probability: {{probability_of_change[0][1]}}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-dark text-center">Overnight Direction: {{tomorrow_change}} with Probability: {{probability_of_change[0][0]}}</li>
+                {% endif %}
+
+    <h1 class="text-center">Result (RandomForestClassifier with GridSearch CV)</h1>
+        <ul class="list-group">
+            <li class="list-group-item text-center">Train Score: {{train_score_cv}}</li>
+            <li class="list-group-item text-center">Test Score: {{test_score_cv}}</li>
+                {% if tomorrow_change_cv == 1 %}
+                    <li class="list-group-item list-group-item-success text-center">Overnight Direction: {{tomorrow_change_cv}} with Probability: {{probability_of_change_cv[0][1]}}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-dark text-center">Overnight Direction: {{tomorrow_change_cv}} with Probability: {{probability_of_change_cv[0][0]}}</li>
+                {% endif %}
+
+    <h1 class="text-center">Result (Decision Tree)</h1>
+        <ul class="list-group">
+            <li class="list-group-item text-center">Train Score: {{train_score_dt}}</li>
+            <li class="list-group-item text-center">Test Score: {{test_score_dt}}</li>
+                {% if tomorrow_change_dt == 1 %}
+                    <li class="list-group-item list-group-item-success text-center">Overnight Direction: {{tomorrow_change_dt}} with Probability: {{probability_of_change_dt[0][1]}}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-dark text-center">Overnight Direction: {{tomorrow_change_dt}} with Probability: {{probability_of_change_dt[0][0]}}</li>
+                {% endif %}
+                
+
+        </div>
+    </div>
+
+{% endblock %}
