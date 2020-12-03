@@ -2,15 +2,13 @@
 
 
 ## Project Motivation
-
 This project leverages the skills learnt in Udacity's Data Science Nanogegree Program to build a model for an API that predicts the overnight direction of a stock.
 
 
 ## File Description
-
     .
     ├── app     
-    │   ├── run.py                           # Flask file that runs app
+    │   ├── run_app.py                       # Flask file that runs app
     │   └── templates   
     │       ├── go.html                      # Prediction result page of web app
     │       └── master.html                  # Main page of web app    
@@ -19,11 +17,11 @@ This project leverages the skills learnt in Udacity's Data Science Nanogegree Pr
     ├── model
     │   └── trainmodel.py                    # Train ML model           
     └── README.md
-    
+
 
 ## Instructions
-1. Run the following command in the app's directory to run your web app.
-    `python run.py`
+1. Run the following command in the app's directory to run your web app. (Python 3.*)
+    `python run_app.py`
 
 2. Go to http://localhost:4200/
 
