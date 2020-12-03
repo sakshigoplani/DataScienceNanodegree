@@ -29,6 +29,6 @@ This project leverages the skills learnt in Udacity's Data Science Nanogegree Pr
 
 
 ## Example
-![Charts](charts.png)
-
 ![Example](example.png)
+
+![Charts](charts.png)
