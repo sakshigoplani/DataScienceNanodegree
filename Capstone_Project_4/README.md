@@ -92,7 +92,8 @@ c. MACD is the histogram plot indicating Convergence/Divergence of the SMAs
 
 ## Conclusion
 
-It was seen that model accuracy with RandomForestClassifier was good and was further improved by tuning hyperparameters using GridSearch CV. However, best resulsts were experienced with Decision Tree Model
+1. It was seen that model accuracy with RandomForestClassifier was good and was further improved by tuning hyperparameters using GridSearch CV. However, best resulsts were experienced with Decision Tree Model
+2. As a future improvement, we can potentially add twitter tweet and news sentiment analysis to the feature set. Also we can add some nltk analysis on SEC filings of the company
 
 
 ## File Description
